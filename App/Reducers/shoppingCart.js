@@ -23,13 +23,12 @@ export function cart(state = initialState, action) {
         	} else {
 				return (update(state, {
 				    items : {
-			    		$merge: {
+	    				$merge: {
 			    			[action.item.ikea_id]:{
 				    			quantity: 1,
-					       }
-			    		}
-				    }
-				        
+				    		}
+				       }
+				    }       
 				}))
         	} 
 

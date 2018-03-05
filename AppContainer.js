@@ -3,17 +3,13 @@ import {
   AppRegistry,
   View,
 } from 'react-native';
-import {InstantSearch, Configure} from 'react-instantsearch/native';
+import {InstantSearch } from 'react-instantsearch/native';
 import { 
     HitsConnected,
     SearchBox,
  } from './App/Components/SearchWidgets'
 
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux'
-import { ActionCreators } from './App/Actions'
-
-export class AppContainer extends React.Component {
+export default class AppContainer extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -27,25 +23,11 @@ export class AppContainer extends React.Component {
           indexName="ikea">
           <SearchBox/>
           <HitsConnected
-              fieldOne="name"
-              incrementItem={this.props.incrementItem}
-              cart={this.props.cart}/>
+              fieldOne="name"/>
         </InstantSearch>
       </View>
     )
   }
 }
 
-//redux
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(ActionCreators, dispatch);
-}
-
-function mapStateToProps(state) {
-  return {
-    cart: state.cart
-  };
-}
-
-export default connect(() => mapStateToProps, mapDispatchToProps)(AppContainer);
